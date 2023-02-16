@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.sample.movielld.entities.Booking;
 import com.sample.movielld.entities.Movie;
@@ -19,12 +20,11 @@ public class StorageService implements IStorageService {
 	private static StorageService instance = null;
 	
 	
-	private Map<Long, User> userMap = null;
-	private Map<Long, Theatre> theatreMap = null;
+	private Map<String, User> userMap = null;
+	private Map<String, Theatre> theatreMap = null;
 	private Map<String, Show> showMap = null;
-	private Map<Long, Movie> movieMap = null;
+	private Map<String, Movie> movieMap = null;
 	private Map<String, Booking> bookingMap = null;
-	
 	private Map<String, List<Show>> movieShow = null;
 	
 	
@@ -47,7 +47,7 @@ public class StorageService implements IStorageService {
 	}
 
 	@Override
-	public User addUser(User u1) {
+	public User saveUser(User u1) {
 		this.userMap.put(u1.getId(), u1);
 		return this.userMap.get(u1.getId());
 	}
@@ -58,20 +58,20 @@ public class StorageService implements IStorageService {
 	}
 
 	@Override
-	public Theatre addTheatre(Theatre theatre1) {
+	public Theatre saveTheatre(Theatre theatre1) {
 		this.theatreMap.put(theatre1.getId(), theatre1);
 		return this.theatreMap.get(theatre1.getId());
 	}
 
 	@Override
-	public Movie addMovie(Movie m) {
+	public Movie saveMovie(Movie m) {
 		
 		this.movieMap.put(m.getId(), m);
 		return this.movieMap.get(m.getId());
 	}
 
 	@Override
-	public Show addShow(Show show1) {
+	public Show saveShow(Show show1) {
 		
 		if(this.movieShow.containsKey(show1.getMovie().getName())) {
 			this.movieShow.get(show1.getMovie().getName()).add(show1);
@@ -102,6 +102,21 @@ public class StorageService implements IStorageService {
 	@Override
 	public Booking getBooking(String id) {
 		return this.bookingMap.get(id);
+	}
+
+	@Override
+	public List<Theatre> findAllTheatres() {
+		return this.theatreMap.entrySet().stream().map(entry -> entry.getValue()).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Movie> findAllMovies() {
+		return this.movieMap.entrySet().stream().map(entry -> entry.getValue()).collect(Collectors.toList());
+	}
+
+	@Override
+	public Theatre findTheatreById(String theatreId) {
+		return this.theatreMap.get(theatreId);
 	}
 	
 	

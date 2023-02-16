@@ -3,6 +3,7 @@ package com.sample.movielld.entities;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import com.sample.movielld.enums.BookingStatus;
 
@@ -16,12 +17,14 @@ public class Booking {
 	private Date bookingTime;
 	
 	public Booking(Show show, User user, List<String> seats) {
+		this.id = UUID.randomUUID().toString();
 		this.show = show;
 		this.user = user;
 		this.seats = seats;
 		this.status = BookingStatus.CREATED;
 		this.bookingTime = new Date();
 	}
+	
 	public String getId() {
 		return id;
 	}

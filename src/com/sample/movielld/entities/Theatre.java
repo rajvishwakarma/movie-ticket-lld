@@ -3,18 +3,19 @@ package com.sample.movielld.entities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Theatre {
 	
-	private long id;
+	private String id;
 	private String name;
 	private String city;
 	private List<Show> shows;
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -36,8 +37,8 @@ public class Theatre {
 		this.shows = shows;
 	}
 	
-	public Theatre(long id, String name, String city) {
-		this.id = id;
+	public Theatre(String name, String city) {
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.city = city;
 		this.shows = new ArrayList<>();
@@ -66,5 +67,8 @@ public class Theatre {
 		Theatre other = (Theatre) obj;
 		return id == other.id;
 	}
-	
+	@Override
+	public String toString() {
+		return "Theatre [name=" + name + ", city=" + city + ", shows=" + shows + "]";
+	}
 }

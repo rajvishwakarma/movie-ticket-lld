@@ -1,18 +1,19 @@
 package com.sample.movielld.entities;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Movie {
 	
-	private long id;
+	private String id;
 	private String name;
 	private String language;
 	private String description;
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -34,8 +35,8 @@ public class Movie {
 		this.description = description;
 	}
 	
-	public Movie(long id, String name, String language, String description) {
-		this.id = id;
+	public Movie(String name, String language, String description) {
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.language = language;
 		this.description = description;

@@ -14,7 +14,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public User addUser(User u1) {
-		return storageService.addUser(u1);
+		return storageService.saveUser(u1);
 	}
 
 	@Override

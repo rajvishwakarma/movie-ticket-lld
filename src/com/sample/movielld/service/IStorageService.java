@@ -10,15 +10,15 @@ import com.sample.movielld.entities.User;
 
 public interface IStorageService {
 
-	User addUser(User u1);
+	User saveUser(User u1);
 
 	User getUser(long id);
 
-	Theatre addTheatre(Theatre theatre1);
+	Theatre saveTheatre(Theatre theatre1);
 
-	Movie addMovie(Movie m);
+	Movie saveMovie(Movie m);
 
-	Show addShow(Show show1);
+	Show saveShow(Show show1);
 
 	List<Show> findShows(String movieSearchTerm);
 
@@ -27,5 +27,11 @@ public interface IStorageService {
 	Booking saveBooking(Booking booking);
 
 	Booking getBooking(String id);
+
+	List<Theatre> findAllTheatres();
+
+	List<Movie> findAllMovies();
+
+	Theatre findTheatreById(String theatreId);
 
 }

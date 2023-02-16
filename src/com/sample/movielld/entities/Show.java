@@ -1,9 +1,7 @@
 package com.sample.movielld.entities;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
@@ -15,7 +13,7 @@ public class Show {
 	private String id;
 	private Date startTS;
 	private long durationInMin;
-	private Theatre theatre;//mapping
+	private String theatreId;//mapping
 	private Movie movie;
 	private Map<String, SeatStatus> seats;
 	
@@ -62,12 +60,12 @@ public class Show {
 		this.seats.putAll(seats);
 	}
 
-	public Theatre getTheatre() {
-		return theatre;
+	public String getTheatreId() {
+		return theatreId;
 	}
 
-	public void setTheatre(Theatre theatre) {
-		this.theatre = theatre;
+	public void setTheatreId(String theatreId) {
+		this.theatreId = theatreId;
 	}
 
 	public Map<String, SeatStatus> getSeats() {
@@ -80,7 +78,7 @@ public class Show {
 
 	@Override
 	public String toString() {
-		return "Show [id=" + id + ", startTS=" + startTS + ", durationInMin=" + durationInMin + ", theatre=" + theatre
+		return "Show [id=" + id + ", startTS=" + startTS + ", durationInMin=" + durationInMin + ", theatreId=" + theatreId
 				+ ", movie=" + movie + ", seats=" + seats + "]";
 	}
 

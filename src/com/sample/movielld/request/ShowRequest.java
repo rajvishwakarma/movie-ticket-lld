@@ -11,14 +11,14 @@ public class ShowRequest {
 	
 	private Date startTS;
 	private long durationInMin;
-	private Theatre theatre;
+	private String theatreId;
 	private Movie movie;
 	private Map<String, SeatStatus> seats;
 	
-	public ShowRequest(Date startTS, long durationInMin, Theatre theatre, Movie movie, Map<String, SeatStatus> seats) {
+	public ShowRequest(Date startTS, long durationInMin, String theatreId, Movie movie, Map<String, SeatStatus> seats) {
 		this.startTS = startTS;
 		this.durationInMin = durationInMin;
-		this.theatre = theatre;
+		this.theatreId = theatreId;
 		this.movie = movie;
 		this.seats = seats;
 	}
@@ -39,12 +39,12 @@ public class ShowRequest {
 		this.durationInMin = durationInMin;
 	}
 
-	public Theatre getTheatre() {
-		return theatre;
+	public String getTheatreId() {
+		return theatreId;
 	}
 
-	public void setTheatre(Theatre theatre) {
-		this.theatre = theatre;
+	public void setTheatreId(String theatreId) {
+		this.theatreId = theatreId;
 	}
 
 	public Movie getMovie() {

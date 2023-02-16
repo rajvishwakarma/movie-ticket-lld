@@ -1,20 +1,21 @@
 package com.sample.movielld.entities;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class User {
 	
-	private long id;
+	private String id;
 	private String name;
 	
-	public User(long id, String name) {
-		this.id = id;
+	public User(String name) {
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -23,6 +24,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -39,6 +41,7 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + "]";

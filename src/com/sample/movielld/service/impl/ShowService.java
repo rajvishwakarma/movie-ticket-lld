@@ -20,7 +20,7 @@ public class ShowService implements IShowService {
 
 	@Override
 	public Show saveShow(Show show1) {
-		return storageService.addShow(show1);
+		return storageService.saveShow(show1);
 	}
 
 	@Override
@@ -28,12 +28,12 @@ public class ShowService implements IShowService {
 		Show show1 = new Show(request.getStartTS(), request.getDurationInMin());
 		show1.setMovie(request.getMovie());
 		show1.addSeats(request.getSeats());
-		show1.setTheatre(request.getTheatre());
+		show1.setTheatreId(request.getTheatreId());
 		show1 = saveShow(show1);
 		
-		Theatre theatre = request.getTheatre();
+		Theatre theatre = theatreService.findById(request.getTheatreId());
 		theatre.addShow(show1);
-		theatreService.addTheatre(theatre);
+		theatreService.saveTheatre(theatre);
 		return show1;
 	}
 

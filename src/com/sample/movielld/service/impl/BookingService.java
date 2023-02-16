@@ -42,9 +42,9 @@ public class BookingService implements IBookingService{
 			}
 			show = showService.saveShow(show);
 			
-			Theatre theatre = show.getTheatre();
+			Theatre theatre = theatreService.findById(show.getTheatreId());
 			theatre.addShow(show);
-			theatreService.addTheatre(theatre);
+			theatreService.saveTheatre(theatre);
 			
 			booking.updateStatus(BookingStatus.PENDING_FOR_PAYMENT);
 			booking = storageService.saveBooking(booking);
@@ -56,10 +56,11 @@ public class BookingService implements IBookingService{
 	@Override
 	public TicketResponse getTicket(String id) {
 		Booking booking = storageService.getBooking(id);
+		Theatre theatre = theatreService.findById(booking.getShow().getTheatreId());
 		
 		return new TicketResponse(booking.getId(), booking.getShow().getStartTS(), booking.getShow().getDurationInMin(), 
-				booking.getShow().getTheatre().getName(), booking.getShow().getTheatre().getCity(), 
-				booking.getShow().getMovie().getName(), booking.getSeats(), booking.getBookingTime());
+				theatre.getName(), theatre.getCity(), booking.getShow().getMovie().getName(), booking.getSeats(), 
+				booking.getBookingTime());
 	}
 
 	@Override

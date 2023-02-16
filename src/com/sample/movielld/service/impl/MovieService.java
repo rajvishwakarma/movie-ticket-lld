@@ -1,5 +1,7 @@
 package com.sample.movielld.service.impl;
 
+import java.util.List;
+
 import com.sample.movielld.entities.Movie;
 import com.sample.movielld.service.IMovieService;
 import com.sample.movielld.service.IStorageService;
@@ -14,6 +16,11 @@ public class MovieService implements IMovieService {
 
 	@Override
 	public Movie addMovie(Movie m) {
-		return this.storageService.addMovie(m);
+		return this.storageService.saveMovie(m);
+	}
+
+	@Override
+	public List<Movie> findAll() {
+		return storageService.findAllMovies();
 	}
 }

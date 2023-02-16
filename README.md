@@ -1,31 +1,37 @@
-# movie-ticket-lld
+# Movie ticket booking system LLD
 
 Requirement
 
-Movie ticket booking system
-Listing of shows
-Listing of theatres
-Booking a seat
-Viewing the ticket
+1. Movie ticket booking system
+2. Listing of shows
+3. Listing of theatres
+4. Booking a seat
+5. Viewing the ticket
 
+Use Cases
 
-#Functional Requirement R & Use Cases
+1. Create User
+2. Create Movie
+3. Create Theatre
+4. Create and Add Shows to Theatre having details of Movie
+5. List All Shows
+6. Lsiting All Theatres
+7. Search By Movie
+8. Booking a Seat(part of Show)
+9. View Ticket Details
+*Payment is out of scope
 
-User -> search of movie
-Based on movie -> theaters with shows 
-Based on shows -> select the seats
-Book seats -> Make payment
-View the tickets
-
-#Design patterns covered
+Design patterns covered
 
 1. Singleton
 2. Observer Pattern
 3. Template Pattern
-4. Strategy Pattern (could be used for Payment)
-5. Depemndency Injection Pattern
-6. State Pattern (For Seats and Booking)
+4. Strategy Pattern (could be used for Payment Strategy)
+5. Dependency Injection Pattern
+6. State Pattern (For Mainting states of Seats and Booking)
 
-Note: I have added comments on the Main page while calling each funtionalities and tried to make it simple.
-There are few use case where we need to have locks on seats if the user selects the seats and create Booking but doesn't complete the payment then the seats should to unlocked and available for other users to book.
-Payment module was not covered in this LLD.
+Note: 
+1. I have added comments on the Main page while calling each funtionalities and tried to make it simple.
+2. Searching Shows by movie could be done based on date, I have checked for Movie name.
+3. While booking a seat of a show, we could have introduced locks on seats, where when a user books a seat, its gets blocked so that no other user is able to book the same seat. Here the Booking will be create with status CREATED. But till the time the Payment is done the seats will be locked for some period and if the user doesn't come back and complete the payment the seats will be again marked as VACANT.
+4. Payment module was not covered in this LLD.
